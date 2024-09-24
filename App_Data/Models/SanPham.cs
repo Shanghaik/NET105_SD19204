@@ -22,7 +22,7 @@ namespace App_Data.Models
         public int TrangThai { get; set; }
         public string HangSX { get; set; }
         // Navigation
-        public virtual List<HDCT> HDCTs { get; set; }
+        public virtual List<HDCT>? HDCTs { get; set; }
         // Data Anotation Validation - Validate dữ liệu
     }
 }
