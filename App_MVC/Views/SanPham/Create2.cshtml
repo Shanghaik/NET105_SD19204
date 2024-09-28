@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Mới</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tạo Mới Sản Phẩm</h1>
+    <form asp-action="Create2" asp-controller="SanPham" method="POST">
+        <label for="ten">Tên:</label>
+        <input type="text" id="ten" name="ten" required>
+
+        <label for="mota">Mô Tả:</label>
+        <input type="text" id="mota" name="mota" required>
+
+        <label for="gia">Giá:</label>
+        <input type="number" id="gia" name="gia" required>
+
+        <label for="soluong">Số Lượng:</label>
+        <input type="number" id="soluong" name="soluong" required>
+
+        <label for="trangthai">Trạng Thái:</label>
+        <input type="number" id="trangthai" name="trangthai" required>
+
+        <label for="hangsx">Hãng Sản Xuất:</label>
+        <input type="text" id="hangsx" name="hangsx" required>
+
+        <button type="submit">Tạo Mới</button>
+    </form>
+</body>
+</html>

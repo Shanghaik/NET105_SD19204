@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace App_API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class SanPhamController : ControllerBase
     {
@@ -31,7 +31,7 @@ namespace App_API.Controllers
         }
 
         // POST api/<SanPhamController>
-        [HttpPost("post-by-param")]
+        [HttpGet("post-by-param")]
         public ActionResult PostByParam(string ten, string mota, long gia, int soluong, int trangthai, string hangsx)
         {
             SanPham sp = new SanPham() // Tạo đối tượng dựa vào các tham số
