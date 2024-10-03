@@ -84,5 +84,25 @@ namespace App_MVC.Controllers
             }
             return Content(response.ToString());
         }
+        // Lưu ý: Phương thức của Action trong Controller của MVC không liên quan tới 
+        // phương thức của API => Chúng có thể khác nhau
+        // Razor view chỉ support 2 phương thức HTTP là Get và Post
+        public IActionResult Delete(Guid id)
+        {
+            string requestUrl = $"https://localhost:7207/SanPham/delete-by-id?id={id}";
+            var response = client.DeleteAsync(requestUrl).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "SanPham");
+            }
+            return Content(response.ToString());
+        }
+        public IActionResult Details(Guid id)
+        {
+            string requestUrl = $"https://localhost:7207/SanPham/get-by-id?id={id}";
+            var response = client.GetStringAsync(requestUrl).Result;
+            SanPham item = JsonConvert.DeserializeObject<SanPham>(response);
+            return View(item);
+        }
     }
 }
