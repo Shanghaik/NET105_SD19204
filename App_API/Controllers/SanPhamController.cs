@@ -71,7 +71,7 @@ namespace App_API.Controllers
         }
 
         // PUT api/<SanPhamController>/5
-        [HttpPut("put-san-pham")]
+        [HttpGet("put-san-pham")]
         public ActionResult Put(Guid id, string mota, long gia, int soluong, int trangthai)
         {
             // Lấy ra đối tượng cần sửa thai Id

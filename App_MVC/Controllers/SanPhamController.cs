@@ -63,7 +63,26 @@ namespace App_MVC.Controllers
                 }
                 else return View();
             }
-
+        }
+        [HttpGet] // Lấy data từ db để sửa xogn truyền vào view
+        public IActionResult Edit(Guid id)
+        {
+            string requestUrl = $"https://localhost:7207/SanPham/get-by-id?id={id}";
+            var response = client.GetStringAsync(requestUrl).Result; 
+            SanPham editItem = JsonConvert.DeserializeObject<SanPham>(response);    
+            return View(editItem);
+        }
+        [HttpPost] // sửa thật
+        public IActionResult Edit(Guid id, string mota, long gia, int soluong, int trangthai)
+        {
+            string requestUrl = $"https://localhost:7207/SanPham/put-san-pham" +
+                $"?id={id}&mota={mota}&gia={gia}&soluong={soluong}&trangthai={trangthai}";
+            var response = client.GetAsync(requestUrl).Result;
+            if(response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index", "SanPham");
+            }
+            return Content(response.ToString());
         }
     }
 }
